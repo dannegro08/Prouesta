@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>¿Quieres ser mi novia/o?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="contenedor">
+        <h1 id="pregunta">¿Me quieres?</h1>
+        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueW94bmZ3bm94bmZ3bm94bmZ3bm94bmZ3bm94bmZ3bm94JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v6aOebdEG8wN2/giphy.gif" alt="osito" id="imagen">
+        
+        <div class="botones">
+            <button id="btnSi">Sí</button>
+            <button id="btnNo">No</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
