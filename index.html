@@ -35,7 +35,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         img {
@@ -46,9 +46,10 @@
         .botones {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 40px;
             height: 60px;
             position: relative;
+            margin-top: 20px;
         }
 
         button {
@@ -82,7 +83,7 @@
         <h1 id="pregunta">¿Me quieres?</h1>
         
         <div class="contenedor-img">
-            <img src="https://media.tenor.com/wMC-R1bA694AAAAi/cute-bear.gif" alt="ositos" id="imagen">
+            <img src="https://media.giphy.com/media/c76IJLufpNwSULPk77/giphy.gif" alt="ositos" id="imagen">
         </div>
         
         <div class="botones">
@@ -97,17 +98,12 @@
         const pregunta = document.querySelector("#pregunta");
         const imagen = document.querySelector("#imagen");
 
-        // Acomodo inicial del botón No para que no se encime en cel
+        // Separación inicial fija del botón No para que no empiece encimado
         setTimeout(() => {
-            if(btnNo.offsetTop === 0) {
-                btnNo.style.left = "60%";
-            }
-        }, 100);
+            btnNo.style.left = "60%";
+        }, 150);
 
-        // Movimiento para PC
         btnNo.addEventListener("mouseover", moverBoton);
-        
-        // Movimiento para Celular (pantalla táctil)
         btnNo.addEventListener("touchstart", (e) => {
             e.preventDefault(); 
             moverBoton();
@@ -126,11 +122,10 @@
             btnNo.style.top = `${randomY}px`;
         }
 
-        // Al darle clic al "Sí"
         btnSi.addEventListener("click", function() {
             pregunta.innerText = "¡Sabía que dirías que sí! ❤️";
-            // Cambia a los ositos abrazándose celebrando
-            imagen.src = "https://media.tenor.com/7gK_z7S-7pMAAAAi/mochi-peach-cute-cat.gif";
+            // Imagen de celebración alternativa estable
+            imagen.src = "https://media.giphy.com/media/mdN9rUEWcoSclUv80R/giphy.gif";
             btnNo.style.display = "none"; 
         });
     </script>
