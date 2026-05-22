@@ -2,19 +2,137 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>¿Quieres ser mi novia/o?</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi novia?</title>
+    <style>
+        body {
+            background-color: #ffdeeb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .contenedor {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            color: #d32f2f;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .contenedor-img {
+            height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        img {
+            max-height: 100%;
+            border-radius: 10px;
+        }
+
+        .botones {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            height: 60px;
+            position: relative;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        #btnSi {
+            background-color: #4caf50;
+            color: white;
+            order: 1;
+        }
+
+        #btnNo {
+            background-color: #f44336;
+            color: white;
+            position: absolute;
+            z-index: 10;
+            order: 2;
+        }
+    </style>
 </head>
 <body>
+
     <div class="contenedor">
         <h1 id="pregunta">¿Me quieres?</h1>
-        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNHJueW94bmZ3bm94bmZ3bm94bmZ3bm94bmZ3bm94bmZ3bm94JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/v6aOebdEG8wN2/giphy.gif" alt="osito" id="imagen">
+        
+        <div class="contenedor-img">
+            <img src="https://media.tenor.com/wMC-R1bA694AAAAi/cute-bear.gif" alt="ositos" id="imagen">
+        </div>
         
         <div class="botones">
             <button id="btnSi">Sí</button>
             <button id="btnNo">No</button>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        const btnNo = document.querySelector("#btnNo");
+        const btnSi = document.querySelector("#btnSi");
+        const pregunta = document.querySelector("#pregunta");
+        const imagen = document.querySelector("#imagen");
+
+        // Acomodo inicial del botón No para que no se encime en cel
+        setTimeout(() => {
+            if(btnNo.offsetTop === 0) {
+                btnNo.style.left = "60%";
+            }
+        }, 100);
+
+        // Movimiento para PC
+        btnNo.addEventListener("mouseover", moverBoton);
+        
+        // Movimiento para Celular (pantalla táctil)
+        btnNo.addEventListener("touchstart", (e) => {
+            e.preventDefault(); 
+            moverBoton();
+        });
+
+        function moverBoton() {
+            btnNo.style.position = "fixed";
+            
+            const anchoPantalla = window.innerWidth - btnNo.offsetWidth - 20;
+            const altoPantalla = window.innerHeight - btnNo.offsetHeight - 20;
+            
+            const randomX = Math.max(10, Math.floor(Math.random() * anchoPantalla));
+            const randomY = Math.max(10, Math.floor(Math.random() * altoPantalla));
+            
+            btnNo.style.left = `${randomX}px`;
+            btnNo.style.top = `${randomY}px`;
+        }
+
+        // Al darle clic al "Sí"
+        btnSi.addEventListener("click", function() {
+            pregunta.innerText = "¡Sabía que dirías que sí! ❤️";
+            // Cambia a los ositos abrazándose celebrando
+            imagen.src = "https://media.tenor.com/7gK_z7S-7pMAAAAi/mochi-peach-cute-cat.gif";
+            btnNo.style.display = "none"; 
+        });
+    </script>
 </body>
 </html>
